@@ -15,15 +15,16 @@ public class Program {
 		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 		
-		System.out.print("Room number:");
+		System.out.print("Room number: ");
 		int number = sc.nextInt();
 		System.out.print("Check in date (dd/mm/yyyy): ");
 		Date checkIn = sdf.parse(sc.next());
 		System.out.print("Check out date (dd/mm/yyyy): ");
 		Date checkOut = sdf.parse(sc.next());
 		
-		if (!checkOut.after(checkIn))
-			System.out.println("Error in reservation. Check Out date must be after Check In date");
+		String error = reservation.updateDates(checkIn, checkOut);
+		if (error !n null) {
+			System.out.println("Error in reservation: " + error;
 		else {
 			Reservation reservation = new Reservation(number, checkIn, checkOut);
 			System.out.println("Reservation: " + reservation);
